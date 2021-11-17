@@ -2,6 +2,7 @@ class Thermostat {
   constructor() {
     this.temp = 20;
     this.minTemp = 10;
+    this.energySaving = true;
   };
 
   currentTemp() {
@@ -10,6 +11,10 @@ class Thermostat {
 
   minimumTemp() {
     return this.minTemp;
+  };
+
+  energySavingMode() {
+    return this.energySaving;
   };
 
   up() {

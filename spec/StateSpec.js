@@ -13,4 +13,8 @@ describe('Thermostat state', () => {
   it('should have a minimum temp of 10 degrees', () => {
     expect(thermostat.minimumTemp()).toEqual(10);
   });
+
+  it('should start in power saving mode', () => {
+    expect(thermostat.energySavingMode()).toBe(true);
+  });
 });
