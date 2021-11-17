@@ -2,6 +2,7 @@ class Thermostat {
   constructor() {
     this.temp = 20;
     this.minTemp = 10;
+    this.maxTemp = 25
     this.energySaving = true;
   };
 
@@ -11,6 +12,10 @@ class Thermostat {
 
   minimumTemp() {
     return this.minTemp;
+  };
+  
+  maximumTemp() {
+    return this.maxTemp;
   };
 
   energySavingMode() {
