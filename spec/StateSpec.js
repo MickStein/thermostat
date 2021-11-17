@@ -19,6 +19,6 @@ describe('Thermostat state', () => {
   });
 
   it('should start in power saving mode', () => {
-    expect(thermostat.energySavingMode()).toBe(true);
+    expect(thermostat.currentMode()).toBe(true);
   });
 });
