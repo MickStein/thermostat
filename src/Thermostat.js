@@ -38,6 +38,7 @@ class Thermostat {
   };
   
   down() {
-    return 'decreased temp';
+    this.temp--;
+    return this.temp;
   };
 };

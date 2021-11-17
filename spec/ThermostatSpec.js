@@ -11,7 +11,7 @@ describe('Thermostat', () => {
   });
   
   it('can decrease temperature', () => {
-    expect(thermostat.down()).toBe('decreased temp');
+    expect(thermostat.down()).toBe(19);
   });
 
   describe('can change power saving mode', () => {
