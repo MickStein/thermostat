@@ -7,7 +7,7 @@ describe('Thermostat', () => {
   });
 
   it('can increase temperature', () => {
-    expect(thermostat.up()).toBe('increased temp');
+    expect(thermostat.up()).toBe(21);
   });
   
   it('can decrease temperature', () => {

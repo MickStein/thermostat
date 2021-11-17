@@ -33,7 +33,8 @@ class Thermostat {
   };
 
   up() {
-    return 'increased temp';
+    this.temp++;
+    return this.temp;
   };
   
   down() {
