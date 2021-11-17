@@ -2,7 +2,7 @@ class Thermostat {
   constructor() {
     this.temp = 20;
     this.minTemp = 10;
-    this.maxTemp = 25
+    this.maxTemp = 25;
     this.powerSaving = true;
   };
 
@@ -15,6 +15,10 @@ class Thermostat {
   };
   
   maximumTemp() {
+    if(this.powerSaving === false) {
+      this.maxTemp = 32;
+    };
+
     return this.maxTemp;
   };
 
