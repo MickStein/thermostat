@@ -29,7 +29,7 @@ class Thermostat {
       this.powerSaving = true;
     };
 
-    return this.powerSaving
+    return this.powerSaving;
   };
 
   up() {
