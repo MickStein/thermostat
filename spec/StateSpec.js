@@ -24,11 +24,18 @@ describe('Thermostat state', () => {
     });
   });
 
-  describe('when power saving is', () => {
-    it('on', () => {
+  describe('Should change when power saving is', () => {
+    it('off to 32 degrees', () => {
       thermostat.powerSavingMode(); //turns off power saving mode
 
       expect(thermostat.maximumTemp()).toBe(32);
+    });
+    
+    it('on again to 25 degrees', () => {
+      thermostat.powerSavingMode(); //turns off power saving mode
+      thermostat.powerSavingMode(); //turns on power saving mode
+
+      expect(thermostat.maximumTemp()).toBe(25);
     });
   });
 });

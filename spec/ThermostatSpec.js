@@ -19,7 +19,7 @@ describe('Thermostat', () => {
       expect(thermostat.powerSavingMode()).toBe(false);
     });
     
-    it('back on', () => {
+    it('on again', () => {
       thermostat.powerSavingMode(); //turns power saving mode off
 
       expect(thermostat.powerSavingMode()).toBe(true);
