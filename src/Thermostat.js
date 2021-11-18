@@ -46,7 +46,9 @@ class Thermostat {
   };
   
   down() {
-    this.temp--;
+    if(this.temp != this.minTemp) {
+      this.temp--;
+    }
     return this.temp;
   };
 };

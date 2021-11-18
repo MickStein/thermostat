@@ -6,19 +6,41 @@ describe('Thermostat', () => {
     thermostat = new Thermostat();
   });
 
-  it('can increase temperature', () => {
-    expect(thermostat.up()).toBe(21);
-  });
-  
-  it('can decrease temperature', () => {
-    expect(thermostat.down()).toBe(19);
+  describe('it can', () => {
+    it('increase temperature', () => {
+      expect(thermostat.up()).toBe(21);
+    });
+    
+    it('decrease temperature', () => {
+      expect(thermostat.down()).toBe(19);
+    });
+
+    it('reset to 20 degrees', () => {
+      thermostat.up(); //Turn temp up to 21
+      thermostat.reset(); //Should reset temp back to 20
+
+      expect(thermostat.currentTemp()).toBe(20);
+    });
   });
 
-  it('can have the temperature reset to 20 degrees', () => {
-    thermostat.up(); //Turn temp up to 21
-    thermostat.reset(); //Should reset temp back to 20
+  describe('it cannot', () => {
+    describe('go below min temp when power saving', () => {
+      it('is on', () => {
+        thermostat.down();
+        thermostat.down();
+        thermostat.down();
+        thermostat.down();
+        thermostat.down();
+        thermostat.down();
+        thermostat.down();
+        thermostat.down();
+        thermostat.down();
+        thermostat.down();
+        thermostat.down();
 
-    expect(thermostat.currentTemp()).toBe(20)
+        expect(thermostat.currentTemp()).toBe(10);
+      });
+    });
   });
 
   describe('can change power saving mode', () => {
