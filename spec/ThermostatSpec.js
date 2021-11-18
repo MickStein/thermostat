@@ -84,4 +84,30 @@ describe('Thermostat', () => {
       expect(thermostat.powerSavingMode()).toBe(true);
     });
   });
+
+  describe('can ask for the current energy usage', () => {
+    it('returns low-usage if <18', () => {
+      thermostat.down();
+      thermostat.down();
+      thermostat.down(); //Is 17 degrees
+
+      expect(thermostat.currentEnergyUsage()).toBe('low-usage');
+    });
+
+    it('returns medium-usage if <=25', () => {
+      expect(thermostat.currentEnergyUsage()).toBe('medium-usage');
+    });
+    
+    it('returns high-usage if >25', () => {
+      thermostat.powerSavingMode();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up(); //Is 26 degrees
+
+      expect(thermostat.currentEnergyUsage()).toBe('high-usage');
+    });
+  });
 });

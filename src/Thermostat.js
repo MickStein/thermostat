@@ -51,4 +51,14 @@ class Thermostat {
     }
     return this.temp;
   };
+
+  currentEnergyUsage() {
+    if(this.temp < 18) {
+      return 'low-usage';
+    } else if(this.temp <= 25) {
+      return 'medium-usage'
+    } else {
+      return 'high-usage'
+    };
+  };
 };
