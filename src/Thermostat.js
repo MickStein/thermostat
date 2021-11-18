@@ -15,10 +15,6 @@ class Thermostat {
   };
   
   maximumTemp() {
-    if(this.powerSaving === false) {
-      this.maxTemp = 32;
-    };
-
     return this.maxTemp;
   };
 
@@ -32,8 +28,10 @@ class Thermostat {
 
   powerSavingMode() {
     if(this.powerSaving === true) {
+      this.maxTemp = 32;
       this.powerSaving = false;
     } else {
+      this.maxTemp = 25;
       this.powerSaving = true;
     };
 
@@ -41,7 +39,9 @@ class Thermostat {
   };
 
   up() {
+    if(this.temp != this.maxTemp) {
     this.temp++;
+    };
     return this.temp;
   };
   

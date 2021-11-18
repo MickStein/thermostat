@@ -24,21 +24,51 @@ describe('Thermostat', () => {
   });
 
   describe('it cannot', () => {
-    describe('go below min temp when power saving', () => {
-      it('is on', () => {
-        thermostat.down();
-        thermostat.down();
-        thermostat.down();
-        thermostat.down();
-        thermostat.down();
-        thermostat.down();
-        thermostat.down();
-        thermostat.down();
-        thermostat.down();
-        thermostat.down();
-        thermostat.down();
-
-        expect(thermostat.currentTemp()).toBe(10);
+    it('go below min temp', () => {
+      thermostat.down();
+      thermostat.down();
+      thermostat.down();
+      thermostat.down();
+      thermostat.down();
+      thermostat.down();
+      thermostat.down();
+      thermostat.down();
+      thermostat.down();
+      thermostat.down();
+      thermostat.down(); //This would be 9 degrees
+        
+      expect(thermostat.currentTemp()).toBe(10);
+    });
+      
+    describe('go above max temp when power saving is', () => {
+      it('on', () => {
+        thermostat.up();
+        thermostat.up();
+        thermostat.up();
+        thermostat.up();
+        thermostat.up();
+        thermostat.up(); //This would be 26 degrees
+          
+        expect(thermostat.currentTemp()).toBe(25);
+      });
+      
+      it('off', () => {
+        thermostat.powerSavingMode();
+        thermostat.up();
+        thermostat.up();
+        thermostat.up();
+        thermostat.up();
+        thermostat.up();
+        thermostat.up();
+        thermostat.up();
+        thermostat.up();
+        thermostat.up();
+        thermostat.up();
+        thermostat.up();
+        thermostat.up();
+        thermostat.up(); //Would be 33 degrees
+          
+        expect(thermostat.currentTemp()).toBe(32);
       });
     });
   });
