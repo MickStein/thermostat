@@ -25,48 +25,27 @@ describe('Thermostat', () => {
 
   describe('it cannot', () => {
     it('go below min temp', () => {
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
-      thermostat.down(); //This would be 9 degrees
+      for (let i = 0; i < 11; i++) {
+        thermostat.down();
+      }; //For loop to make temp under 10 degrees
         
       expect(thermostat.currentTemp()).toBe(10);
     });
       
     describe('go above max temp when power saving is', () => {
       it('on', () => {
-        thermostat.up();
-        thermostat.up();
-        thermostat.up();
-        thermostat.up();
-        thermostat.up();
-        thermostat.up(); //This would be 26 degrees
+        for (let i = 0; i < 6; i++) {
+          thermostat.up();
+        }; //For loop to make temp over 25 degrees
           
         expect(thermostat.currentTemp()).toBe(25);
       });
       
       it('off', () => {
         thermostat.powerSavingMode();
-        thermostat.up();
-        thermostat.up();
-        thermostat.up();
-        thermostat.up();
-        thermostat.up();
-        thermostat.up();
-        thermostat.up();
-        thermostat.up();
-        thermostat.up();
-        thermostat.up();
-        thermostat.up();
-        thermostat.up();
-        thermostat.up(); //Would be 33 degrees
+        for (let i = 0; i < 13; i++) {
+          thermostat.up();
+        }; //For loop to make temp over 32 degrees
           
         expect(thermostat.currentTemp()).toBe(32);
       });
@@ -87,9 +66,9 @@ describe('Thermostat', () => {
 
   describe('can ask for the current energy usage', () => {
     it('returns low-usage if <18', () => {
-      thermostat.down();
-      thermostat.down();
-      thermostat.down(); //Is 17 degrees
+      for (let i = 0; i < 3; i++) {
+        thermostat.down();
+      }; //For loop to make temp under 18 degrees
 
       expect(thermostat.currentEnergyUsage()).toBe('low-usage');
     });
@@ -100,12 +79,9 @@ describe('Thermostat', () => {
     
     it('returns high-usage if >25', () => {
       thermostat.powerSavingMode();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up(); //Is 26 degrees
+      for (let i = 0; i < 6; i++) {
+        thermostat.up();
+      }; //For loop to make temp over 25 degrees
 
       expect(thermostat.currentEnergyUsage()).toBe('high-usage');
     });
