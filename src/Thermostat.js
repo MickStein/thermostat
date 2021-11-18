@@ -22,6 +22,10 @@ class Thermostat {
     return this.maxTemp;
   };
 
+  reset() {
+    this.temp = 20;
+  };
+
   currentMode() {
     return this.powerSaving;
   }
