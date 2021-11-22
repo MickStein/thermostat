@@ -31,6 +31,7 @@ class Thermostat {
       this.maxTemp = 32;
       this.powerSaving = false;
     } else {
+      this.reset();
       this.maxTemp = 25;
       this.powerSaving = true;
     };
