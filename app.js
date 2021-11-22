@@ -2,7 +2,15 @@
 document.addEventListener("DOMContentLoaded", () => {
   const updateTemp = () => {
     document.querySelector('#temp').innerText = thermostat.temp;
+    if (thermostat.currentEnergyUsage() === 'low-usage') {
+      document.querySelector('#temp').style.color = 'green';
+    } else if (thermostat.currentEnergyUsage() === 'medium-usage') {
+      document.querySelector('#temp').style.color = 'black';
+    } else {
+      document.querySelector('#temp').style.color = 'red';
+    };
   };
+  
   const thermostat = new Thermostat();
   updateTemp();
 
