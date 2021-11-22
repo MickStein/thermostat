@@ -2,13 +2,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const updateTemp = () => {
     document.querySelector('#temp').innerText = thermostat.temp;
-    if (thermostat.currentEnergyUsage() === 'low-usage') {
-      document.querySelector('#temp').style.color = 'green';
-    } else if (thermostat.currentEnergyUsage() === 'medium-usage') {
-      document.querySelector('#temp').style.color = 'black';
-    } else {
-      document.querySelector('#temp').style.color = 'red';
-    };
+    // below takes text in temp id and adds a class name depending on what is returned from 
+    // thermostat.js logic file. This means it will be either low-usage, medium-usage or
+    // high-usage, which is then added to the html as a class so the CSS reads this and
+    // changes the text colour accordingly.
+    document.querySelector('#temp').className = thermostat.currentEnergyUsage();
   };
   
   const thermostat = new Thermostat();
