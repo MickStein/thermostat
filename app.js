@@ -31,4 +31,22 @@ document.addEventListener("DOMContentLoaded", () => {
     thermostat.powerSavingMode();
     updateTemp();
   });
+
+  // The below takes the current city id from the html and uses change to update the
+  // city const that is then interpolated into the url const. 
+  // This url is then used to return data for the selected city.
+  // interface.js
+  document.querySelector('#select-city').addEventListener('submit', (event) => {
+    event.preventDefault();
+    const city = document.querySelector('#current-city').value;
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric`
+
+    fetch(url)
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        document.querySelector('#current-temperature').innerText = data.main.temp;
+      });
+  });
 });
